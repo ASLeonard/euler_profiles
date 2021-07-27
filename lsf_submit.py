@@ -79,6 +79,10 @@ class Submitter:
     @property
     def use_singularity(self) -> int:
         return self.resources.get("use_singularity",0)
+    
+    @property
+    def use_AVX512(self) -> int:
+        return self.resources.get("need_AVX512",0)
 
     #@property
     #def memory_units(self) -> Unit:
@@ -93,6 +97,8 @@ class Submitter:
             r_cmd += f' -R "rusage[scratch={self.disk_scratch*1000/self.threads}]"'
         if self.use_singularity:
             r_cmd += ' -R singularity'
+        if self.use_AVX512:
+            r_cmd += ' -R "select[model==XeonGold_6140]"'
         return r_cmd
     
     @property

@@ -28,9 +28,12 @@ Some new options were added
     - $TMPDIR only survives for the duration of **that** rule
   - use_singularity = True
     - sets the singularity flag (if you already have access)
+  - use_AVX512 = True
+    - requires the job runs on AVX512 nodes **only**, this will slow the job in the queue, but should run faster once going
 - **log** structure
   - generally logs/{rule}/{wildcard_info}\_<current-time>
 - Option to modify further for GPU or other specifics
+
 
 ### example
 An example which needs 8 hours and 30GB local-node storage for the output
