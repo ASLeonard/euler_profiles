@@ -82,7 +82,7 @@ class Submitter:
     
     @property
     def use_AVX512(self) -> int:
-        return self.resources.get("need_AVX512",0)
+        return self.resources.get("use_AVX512",0)
 
     #@property
     #def memory_units(self) -> Unit:
