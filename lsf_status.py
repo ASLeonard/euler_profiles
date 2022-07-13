@@ -196,8 +196,8 @@ class StatusChecker:
 
 
 if __name__ == "__main__":
-    jobid = int(sys.argv[1])
-    outlog = sys.argv[2]
+    jobid = int(sys.argv[1].split()[0])
+    outlog = sys.argv[1].split()[1]
     kill_unknown = False
     kill_zombie = False
     
