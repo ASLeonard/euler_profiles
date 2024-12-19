@@ -1,31 +1,31 @@
-#cluster-sidecar: "slurm-sidecar.py"
-#cluster-cancel: "scancel"
 restart-times: "0"
-jobscript: "slurm-jobscript.sh"
-#cluster: "slurm-submit.py"
-#cluster-status: "slurm-status.py"
 max-jobs-per-second: "500"
+slurm-init-seconds-before-status-checks: 60
 max-status-checks-per-second: "10"
-local-cores: 2
 latency-wait: "60"
 
-slurm-init-seconds-before-status-checks: 60
-
-software-deployment-method: {conda,apptainer,env-modules}
+software-deployment-method: "conda" #'apptainer', 'env-modules'
 notemp: True
 
 keep-going: True
 #scheduler: "greedy"
 jobs: 1500
 cores: 2500
-printshellcmds: True
+local-cores: 4
 
+printshellcmds: False
+quiet: "rules"
+keep-going: True
 rerun-trigger: "mtime"
-#quiet: "rules" 
 
 default-resources:
   - threads=1
   - mem_mb_per_cpu=1024
+  #these below are set to make the executor not request them based on file size
+  - mem_mb=0
+  - mem_mib=0
+  - disk_mb=0
+  - disk_mib=0
   - runtime="4h"
   - slurm_account="ls_pausch"
   - slurm_partition='normal.4h'
